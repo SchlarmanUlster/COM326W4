@@ -17,8 +17,11 @@ using namespace std;
 int main() {
 
 	Student stu1("Jeni Watt", "B004568656", "BSc Computing", 1);
+	std::cout << stu1.GetEnrolled() << std::endl;
 	Student stu2("Frank Lyons");
+	std::cout << stu1.GetEnrolled() << std::endl;
 	Student stu3;
+	std::cout << stu1.GetEnrolled() << std::endl;
 
 	stu3.SetName("Paul Doherty");
 	stu3.SetCourse("BSc Geology");

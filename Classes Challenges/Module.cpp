@@ -1,11 +1,24 @@
 #include "Module.h"
+#include <iostream>
 
 
 Module::Module()
 {
+	std::cout << "Default Constructor of the Module class called on empty module" << std::endl;
 }
 Module::Module(std::string moduleTitle, std::string moduleCode, int moduleCreditPoints, int moduleMark) :
-	moduleTitle_{ moduleTitle }, moduleCode_{ moduleCode }, moduleCreditPoints_{ moduleCreditPoints }, moduleMark_{ moduleMark } {}
+	moduleTitle_{ moduleTitle }, moduleCode_{ moduleCode }, moduleCreditPoints_{ moduleCreditPoints }, moduleMark_{ moduleMark } {
+	std::cout << "Custom Constructor of the Module class called on " << moduleTitle_ << std::endl;
+}
+
+Module::~Module() {
+	if (moduleTitle_.size() == 0) {
+		std::cout << "Destructor of the Module class called on empty module" << std::endl;
+	}
+	else {
+		std::cout << "Destructor of the Module class called on " << moduleTitle_ << std::endl;
+	}
+}
 
 std::string Module::getModuleTitle() const{
 	return moduleTitle_;

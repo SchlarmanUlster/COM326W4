@@ -10,17 +10,21 @@
 
 #include "Student.h"
 
+int Student::enrolled_{ 0 };
+
 //Default constuctor
 //Note how we use the scope resolution operator ::
 //We do that to specify which class the member functions belong to
 //Class_Name::Member_Function
 Student::Student() {
-	std::cout << "The default Student class constructor was called" << std::endl;
+	std::cout << "Default Constructor of the Student class called on empty student" << std::endl;
+	enrolled_++;
 }
 
 Student::Student(std::string name) {
-	std::cout << "The first custom Student class constructor was called" << std::endl;
 	name_ = name;
+	std::cout << "Name Constructor of the Student class called on " << name_ << std::endl;
+	enrolled_++;
 }
 
 //This constructor creates and initialises it by copying the data from each variable
@@ -29,12 +33,25 @@ Student::Student(std::string name) {
 Student::Student(std::string name, std::string registration, std::string course, int yearofStudy) : name_{ name }, registrstionID_{ registration }, course_{ course},
 	yearofStudy_{ yearofStudy}
 {
-	std::cout << "The second custom Student class constructor was called" << std::endl;
-
+	std::cout << "Custom Constructor of the Student class called on " << name_ << std::endl;
+	enrolled_++;
 	//we could assign the values of the parameters to the data members like this
 	//name_ = name;
 };
 
+Student::~Student() {
+	if (name_.size() == 0) {
+		std::cout << "Destructor of the Student class called on empty student" << std::endl;
+	}
+	else {
+		std::cout << "Destructor of the Student class called on " << name_ << std::endl;
+	}
+	enrolled_--;
+}
+
+int Student::GetEnrolled() {
+	return enrolled_;
+}
 
 //Getters and setters
 void Student::SetName(std::string name) {
@@ -125,3 +142,4 @@ void Student::UpdateModule(std::string moduleTitle, std::string moduleCode, int 
 		}
 	}
 }
+

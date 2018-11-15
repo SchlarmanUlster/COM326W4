@@ -27,6 +27,8 @@ private:
 
 	std::vector<Module> moduleMarks_{};
 
+	static int enrolled_;
+
 	//int moduleOneMark_;
 	//int moduleTwoMark_;
 	//int moduleThreeMark_;
@@ -42,6 +44,10 @@ public:
 	Student(std::string name, std::string registration, std::string course, int yearofStudy);
 
 	Student(std::string name);
+
+	~Student();
+
+	static int GetEnrolled();
 
 	//Getters and setters for each member variable
 	void SetName(std::string name);
@@ -62,6 +68,8 @@ public:
 	void UpdateModule(std::string moduleTitle, std::string moduleCode, int moduleCreditPoints, int moduleMark);
 
 	void ToString() const;
+
+	
 
 	std::string Student::CalculateClassification() const;
 
